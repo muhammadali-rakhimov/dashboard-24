@@ -9,13 +9,6 @@ import { Link } from "react-router-dom";
 import { withNamespaces } from 'react-i18next';
 
 import { connect } from "react-redux";
-import {
-  changeLayout,
-  changeLayoutWidth,
-  changeSidebarTheme,
-  changeSidebarType,
-  changePreloader
-} from "../../store/actions";
 
 class SidebarContent extends Component {
 
@@ -307,10 +300,4 @@ const mapStatetoProps = state => {
     return { ...state.Layout };
   };
 
-export default withRouter(connect(mapStatetoProps, {
-    changeLayout,
-    changeSidebarTheme,
-    changeSidebarType,
-    changeLayoutWidth,
-    changePreloader
-})(withNamespaces()(SidebarContent)));
+export default withRouter(SidebarContent);

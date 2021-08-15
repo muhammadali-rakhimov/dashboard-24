@@ -33,10 +33,6 @@ import slack from "../../assets/images/brands/slack.png";
 //Import mega menu image
 import megamenuImg from "../../assets/images/megamenu-img.png";
 
-// Redux Store
-import { toggleRightSidebar } from "../../store/actions";
-
-
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -46,7 +42,6 @@ class Header extends Component {
       isProfile : false,
     };
     this.toggleMenu = this.toggleMenu.bind(this);
-    this.toggleRightbar = this.toggleRightbar.bind(this);
     this.toggleFullscreen = this.toggleFullscreen.bind(this);
     this.toggleSearch = this.toggleSearch.bind(this);
   }
@@ -59,13 +54,6 @@ class Header extends Component {
    */
   toggleMenu() {
     this.props.openLeftMenuCallBack();
-  }
-
-  /**
-   * Toggles the sidebar
-   */
-  toggleRightbar() {
-    this.props.toggleRightSidebar();
   }
 
   toggleFullscreen() {
@@ -350,7 +338,7 @@ class Header extends Component {
 
                         <ProfileMenu />
 
-                        <div onClick={this.toggleRightbar} className="dropdown d-inline-block">
+                        <div className="dropdown d-inline-block">
                             <Button type="button" color="none" className="header-item noti-icon right-bar-toggle waves-effect">
                                 <i className="ri-settings-2-line"></i>
                             </Button>
@@ -369,4 +357,4 @@ const mapStatetoProps = state => {
   return { layoutType };
 };
 
-export default connect(mapStatetoProps, { toggleRightSidebar })(withNamespaces()(Header));
+export default Header;

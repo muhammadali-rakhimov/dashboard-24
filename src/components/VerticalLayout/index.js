@@ -2,20 +2,11 @@ import React, { Component } from "react";
 
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import {
-  changeLayout,
-  changeSidebarTheme,
-  changeSidebarType,
-  toggleRightSidebar,
-  changeTopbarTheme,
-  changeLayoutWidth
-} from "../../store/actions";
 
 // Layout Related Components
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
-import Rightbar from "../CommonForBoth/Rightbar";
 
 class Layout extends Component {
   constructor(props) {
@@ -23,12 +14,6 @@ class Layout extends Component {
     this.state = {
       isMobile: /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
     };
-    this.toggleMenuCallback = this.toggleMenuCallback.bind(this);
-    this.toggleRightSidebar = this.toggleRightSidebar.bind(this);
-  }
-
-  toggleRightSidebar() {
-    this.props.toggleRightSidebar();
   }
 
   capitalizeFirstLetter = string => {
@@ -66,32 +51,7 @@ class Layout extends Component {
 
     document.title =
       currentage + " | Nazox - Responsive Bootstrap 4 Admin Dashboard";
-    if (this.props.leftSideBarTheme) {
-      this.props.changeSidebarTheme(this.props.leftSideBarTheme);
-    }
-
-    if (this.props.layoutWidth) {
-      this.props.changeLayoutWidth(this.props.layoutWidth);
-    }
-
-    if (this.props.leftSideBarType) {
-      this.props.changeSidebarType(this.props.leftSideBarType);
-    }
-    if (this.props.topbarTheme) {
-      this.props.changeTopbarTheme(this.props.topbarTheme);
-    }
-
-    if (this.props.showRightSidebar) {
-      this.toggleRightSidebar();
-    }
   }
-  toggleMenuCallback = () => {
-    if (this.props.leftSideBarType === "default") {
-      this.props.changeSidebarType("condensed", this.state.isMobile);
-    } else if (this.props.leftSideBarType === "condensed") {
-      this.props.changeSidebarType("default", this.state.isMobile);
-    }
-  };
 
   render() {
     return (
@@ -117,7 +77,6 @@ class Layout extends Component {
                 <Footer/>
               </div>
         </div>
-        <Rightbar />
       </React.Fragment>
     );
   }
@@ -129,12 +88,5 @@ const mapStatetoProps = state => {
     ...state.Layout
   };
 };
-export default connect(mapStatetoProps, {
-  changeLayout,
-  changeSidebarTheme,
-  changeSidebarType,
-  toggleRightSidebar,
-  changeTopbarTheme,
-  changeLayoutWidth
-})(withRouter(Layout));
+export default Layout;
 

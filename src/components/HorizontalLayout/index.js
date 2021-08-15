@@ -2,18 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
-import {
-  changeLayout,
-  changeTopbarTheme,
-  toggleRightSidebar,
-  changeLayoutWidth,
-} from "../../store/actions";
-
 // Other Layout related Component
 import Navbar from "./Navbar";
 import Header from "./Header";
 import Footer from "./Footer";
-import Rightbar from "../CommonForBoth/Rightbar";
 
 class Layout extends Component {
   constructor(props) {
@@ -21,14 +13,6 @@ class Layout extends Component {
     this.state = {
       isMenuOpened: false
     };
-    this.toggleRightSidebar = this.toggleRightSidebar.bind(this);
-  }
-
-  /**
-  * Open/close right sidebar
-  */
-  toggleRightSidebar() {
-    this.props.toggleRightSidebar();
   }
 
   componentDidUpdate(prevProps) {
@@ -63,17 +47,6 @@ class Layout extends Component {
 
     document.title =
       currentage + " | Nazox - Responsive Bootstrap 4 Admin Dashboard";
-
-    this.props.changeLayout('horizontal');
-    if (this.props.topbarTheme) {
-      this.props.changeTopbarTheme(this.props.topbarTheme);
-    }
-    if (this.props.layoutWidth) {
-      this.props.changeLayoutWidth(this.props.layoutWidth);
-    }
-    if (this.props.showRightSidebar) {
-      this.toggleRightSidebar();
-    }
   }
 
   /**
@@ -97,7 +70,6 @@ class Layout extends Component {
         <div id="layout-wrapper">
           <Header theme={this.props.topbarTheme}
             isMenuOpened={this.state.isMenuOpened}
-            toggleRightSidebar={this.toggleRightSidebar}
             openLeftMenuCallBack={this.openMenu}
           />
           <Navbar menuOpen={this.state.isMenuOpened} />
@@ -106,7 +78,6 @@ class Layout extends Component {
             <Footer />
           </div>
         </div>
-        <Rightbar />
       </React.Fragment>
     );
   }
@@ -116,6 +87,4 @@ const mapStatetoProps = state => {
     ...state.Layout
   };
 };
-export default connect(mapStatetoProps, {
-  changeTopbarTheme, toggleRightSidebar, changeLayout, changeLayoutWidth
-})(withRouter(Layout));
+export default Layout

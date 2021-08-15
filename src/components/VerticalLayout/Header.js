@@ -28,9 +28,6 @@ import { withNamespaces } from "react-i18next";
 //Import Megamenu
 import MegaMenu from "./MegaMenu";
 
-// Redux Store
-import { toggleRightSidebar } from "../../store/actions";
-
 //Import logo Images
 import logosmdark from "../../assets/images/logo-sm-dark.png";
 import logodark from "../../assets/images/logo-dark.png";
@@ -53,7 +50,6 @@ class Header extends Component {
       isSocialPf: false
     };
     this.toggleMenu = this.toggleMenu.bind(this);
-    this.toggleRightbar = this.toggleRightbar.bind(this);
     this.toggleFullscreen = this.toggleFullscreen.bind(this);
   }
   /**
@@ -61,13 +57,6 @@ class Header extends Component {
    */
   toggleMenu() {
     this.props.toggleMenuCallback();
-  }
-
-  /**
-   * Toggles the sidebar
-   */
-  toggleRightbar() {
-    this.props.toggleRightSidebar();
   }
 
 
@@ -226,7 +215,7 @@ class Header extends Component {
                         <ProfileMenu/>
 
                         <div className="dropdown d-inline-block">
-                            <Button color="none" onClick={this.toggleRightbar} type="button" className="header-item noti-icon right-bar-toggle waves-effect">
+                            <Button color="none" type="button" className="header-item noti-icon right-bar-toggle waves-effect">
                                 <i className="ri-settings-2-line"></i>
                             </Button>
                         </div>
@@ -244,4 +233,4 @@ const mapStatetoProps = state => {
   return { layoutType };
 };
 
-export default connect(mapStatetoProps, { toggleRightSidebar })(withNamespaces()(Header));
+export default Header;
