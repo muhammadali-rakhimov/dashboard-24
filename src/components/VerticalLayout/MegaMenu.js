@@ -88,9 +88,6 @@ class MegaMenu extends Component {
                                                         <Link to="#">{this.props.t('Compact Sidebar')}</Link>
                                                     </li>
                                                     <li>
-                                                        <Link to="#">{this.props.t('Horizontal layout')}</Link>
-                                                    </li>
-                                                    <li>
                                                         <Link to="#">{this.props.t('Maintenance')}</Link>
                                                     </li>
                                                     <li>
