@@ -117,7 +117,6 @@ class Layout extends Component {
                 <Footer/>
               </div>
         </div>
-        <Rightbar />
       </React.Fragment>
     );
   }
