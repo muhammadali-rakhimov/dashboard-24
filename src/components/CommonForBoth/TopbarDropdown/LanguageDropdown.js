@@ -13,9 +13,6 @@ import { withNamespaces } from 'react-i18next';
 // flags
 import uzFlag from "../../../assets/images/flags/uz.jpg";
 import usFlag from "../../../assets/images/flags/us.jpg";
-import spain from "../../../assets/images/flags/spain.jpg";
-import germany from "../../../assets/images/flags/germany.jpg";
-import italy from "../../../assets/images/flags/italy.jpg";
 import russia from "../../../assets/images/flags/russia.jpg";
 
 class LanguageDropdown extends Component {
@@ -41,14 +38,12 @@ class LanguageDropdown extends Component {
   //set the selected language to i18n
   i18n.changeLanguage(lng);
 
-  if(lng === "sp")
-      this.setState({lng : "Spanish", flag : spain });
-  else if(lng === "rs")
+  if(lng === "rs")
        this.setState({lng : "Russian", flag : russia });
-  else if(lng === "it")
-       this.setState({lng : "Italian", flag : italy });
+  else if(lng === "uz")
+       this.setState({lng : "Uzbek", flag : uzFlag });
   else if(lng === "eng")
-       this.setState({lng : "Uzbek", flag : usFlag });
+       this.setState({lng : "English", flag : usFlag });
  }
 
   render() {
