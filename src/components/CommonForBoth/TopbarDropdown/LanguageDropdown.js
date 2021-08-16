@@ -58,7 +58,7 @@ class LanguageDropdown extends Component {
 
                             <DropdownMenu right>
 
-                                <DropdownItem active={this.state.lng === "Uzbek" ? true : false } href="" onClick={() => this.changeLanguageAction('eng')} className="notify-item">
+                                <DropdownItem active={this.state.lng === "Uzbek" ? true : false } href="" onClick={() => this.changeLanguageAction('uz')} className="notify-item">
                                     <img src={uzFlag} alt="user" className="mr-1" height="12"/> <span className="align-middle">Uzbek</span>
                                 </DropdownItem>
 
